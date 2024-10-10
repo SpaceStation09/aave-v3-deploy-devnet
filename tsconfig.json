@@ -14,7 +14,7 @@
         "helpers",
         "typechain",
         "tests",
-        "markets"
+        "markets",
      ],
      "files": ["./hardhat.config.ts"]
 

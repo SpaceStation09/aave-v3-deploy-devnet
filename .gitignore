@@ -20,3 +20,6 @@ typechain
 types
 deployments
 docs/*.txt
+
+# tmp
+borrowToken.ts
