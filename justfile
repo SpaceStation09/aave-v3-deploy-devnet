@@ -16,6 +16,7 @@ eurs := "0x70E5370b8981Abc6e14C91F4AcE823954EFC8eA3"
 pool := "0x63F22329e0693271eAA5cBACB5D4F3218eB3F29A"
 faucet := "0x666D0c3da3dBc946D5128D06115bb4eed4595580"
 deployer := "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+ethgateway := "0x707531c9999AaeF9232C8FEfBA31FBa4cB78d84a"
 
 # View
 # set env variable `scrollsdk` in advance
@@ -75,6 +76,9 @@ supply_aave amount="100":
 
 supply_eurs amount="100":
   ts-node ./supplyToken.ts {{eurs}} {{amount}}
+
+supply_eth amount="100":
+  cast send --private-key $DEPLOYER_PRIVATE_KEY --rpc-url $scrollsdk {{ethgateway}} "depositETH(address,address,uint16)" {{pool}} {{deployer}} 0 --value `cast to-wei {{amount}}`
   
 borrow_usdt:
   cast send --private-key $DEPLOYER_PRIVATE_KEY --rpc-url $scrollsdk {{pool}} "borrow(address,uint256,uint256,uint16,address)" {{usdt}} 1000000 1 0 {{deployer}}
